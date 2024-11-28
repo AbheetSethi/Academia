@@ -14,10 +14,11 @@ public class AuthController {
     private final EncryptionService encryptionService;
 
     @GetMapping
-    public ResponseEntity<String> getAuthToken() {
-        String name = "admin123";
-        return ResponseEntity.ok(encryptionService.encode(name));
+    public ResponseEntity<String> getAuthToken(@RequestParam ("password") String password) {
+        //String name = "admin1234";
+        return ResponseEntity.ok(encryptionService.encode(password));
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestParam ("user") String user, @RequestParam ("password") String password) {

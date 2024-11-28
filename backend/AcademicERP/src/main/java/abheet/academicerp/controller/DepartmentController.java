@@ -45,7 +45,10 @@ public class DepartmentController {
 
 
     @GetMapping
-    public ResponseEntity<List<DepartmentResponse>> getDepartment() {
+    public ResponseEntity<List<DepartmentResponse>> getDepartment(@RequestHeader ("Authorization") String authHeader) {
+        if(!security.authenticate(authHeader)){
+            return ResponseEntity.status(401).build();
+        }
         List<DepartmentResponse> department = departmentService.getAllDepartment();
         return ResponseEntity.ok(department);
     }

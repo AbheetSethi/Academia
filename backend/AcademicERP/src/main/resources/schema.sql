@@ -6,7 +6,7 @@ create table if not exists departments(
     department_id bigint auto_increment primary key,
     name varchar(100) not null unique,
     capacity int not null
-);
+    );
 
 create table if not exists employees(
     employee_id bigint auto_increment primary key,
@@ -14,7 +14,6 @@ create table if not exists employees(
     last_name varchar(25),
     email varchar(100) unique not null,
     title varchar(25),
-    dep_id bigint not null,
+    dep_id bigint null,
     password varchar(200)
-);
-
+    );
